@@ -7,6 +7,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
 
 const formSchema = z.object({
   name: z.string().min(2),
@@ -120,12 +121,7 @@ const RegisterPage = () => {
             }
             `}
       />
-      <button
-        type="submit"
-        className="bg-rose-500 p-4 rounded text-white font-semibold w-full"
-      >
-        Submit
-      </button>
+      <Button>Submit</Button>
     </form>
   );
 };

@@ -2,6 +2,7 @@
 
 import CategoryInput from "@/components/inputs/category-input";
 import ImageUpload from "@/components/inputs/image-upload";
+import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -61,7 +62,7 @@ const New = () => {
       .post("/api/posts", data)
       .then(() => {
         toast.success("Post created");
-        router.push('/');
+        router.push("/");
         router.refresh();
         reset();
       })
@@ -150,12 +151,7 @@ const New = () => {
             }
             `}
       />
-      <button
-        className="bg-rose-500 p-2 w-fit rounded text-white font-semibold"
-        type="submit"
-      >
-        Submit
-      </button>
+      <Button>Submit</Button>
     </form>
   );
 };
