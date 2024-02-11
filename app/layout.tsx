@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import ToasterProvider from "@/provider/toaster-provider";
 import getCurrentUser from "@/actions/getCurrentUser";
-import Categories from "@/components/categories";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +23,6 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar currentUser={currentUser} />
-        <Categories />
         <ToasterProvider />
         <div className="py-10 px-2 max-w-screen-lg mx-auto">{children}</div>
       </body>

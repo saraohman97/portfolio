@@ -1,6 +1,5 @@
 "use client";
 
-import { categories } from "@/components/categories";
 import CategoryInput from "@/components/inputs/category-input";
 import ImageUpload from "@/components/inputs/image-upload";
 import axios from "axios";
@@ -8,6 +7,21 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { GiWindmill } from "react-icons/gi";
+import { TbBeach } from "react-icons/tb";
+
+const categories = [
+  {
+    label: "Beach",
+    icon: TbBeach,
+    description: "Beach related posts.",
+  },
+  {
+    label: "Modern",
+    icon: GiWindmill,
+    description: "Modern posts.",
+  },
+];
 
 const New = () => {
   const [isLoading, setIsLoading] = useState(false);
