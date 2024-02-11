@@ -40,9 +40,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           )}
           {isOpen && currentUser && (
             <div className="absolute top-12 right-0 border rounded min-w-32 bg-white">
-              <Link href="/new">
+              <Link href="/posts">
                 <div className="p-2 hover:bg-gray-50 cursor-pointer">
-                  New post
+                  Posts
                 </div>
               </Link>
               <hr />
