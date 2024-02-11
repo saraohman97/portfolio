@@ -1,14 +1,13 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table";
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
 export type Post = {
-  id: string
-  title: string
-  category: string
-}
+  id: string;
+  title: string;
+  category: string;
+  createdAt: string;
+};
 
 export const columns: ColumnDef<Post>[] = [
   {
@@ -18,5 +17,9 @@ export const columns: ColumnDef<Post>[] = [
   {
     accessorKey: "category",
     header: "Category",
-  }
-]
+  },
+  {
+    accessorKey: "createdAt",
+    header: "CreatedAt",
+  },
+];
