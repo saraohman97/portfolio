@@ -4,6 +4,7 @@ import CategoryInput from "@/components/inputs/category-input";
 import ImageUpload from "@/components/inputs/image-upload";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -76,6 +77,9 @@ const New = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+      <Link href="/posts">
+        <Button>Back</Button>
+      </Link>
       <h1>Write a new post</h1>
       <hr className="w-96" />
 
