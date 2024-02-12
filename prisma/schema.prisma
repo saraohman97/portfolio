@@ -21,8 +21,9 @@ model User {
   updatedAt      DateTime  @updatedAt
   favoriteIds    String[]  @db.ObjectId
 
-  accounts Account[]
-  posts    Post[] //listings
+  accounts   Account[]
+  posts      Post[]
+  categories Category[]
 }
 
 model Account {
@@ -52,6 +53,15 @@ model Post {
   createdAt   DateTime @default(now())
   category    String
   userId      String   @db.ObjectId
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  label     String
+  createdAt DateTime @default(now())
+  userId    String   @db.ObjectId
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

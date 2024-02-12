@@ -46,6 +46,12 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
                 </div>
               </Link>
               <hr />
+              <Link href="/categories">
+                <div className="p-2 hover:bg-gray-50 cursor-pointer">
+                  Categories
+                </div>
+              </Link>
+              <hr />
               <div
                 onClick={() => signOut()}
                 className="p-2 hover:bg-gray-50 cursor-pointer"
