@@ -1,10 +1,10 @@
-import getPosts from "@/actions/getPosts";
 import { Post, columns } from "./columns";
 import { DataTable } from "./data-table";
 import { format } from "date-fns";
+import getDashboardPosts from '@/actions/getDashboardPosts'
 
 export default async function PostsClient() {
-  const data = await getPosts();
+  const data = await getDashboardPosts();
 
   const formattedData: Post[] = data.map((item) => ({
     id: item.id,
