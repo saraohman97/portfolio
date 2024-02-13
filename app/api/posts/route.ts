@@ -15,7 +15,7 @@ export async function POST(
         title,
         description,
         category,
-        imageSrc
+        images
     } = body;
 
     Object.keys(body).forEach((value: any) => {
@@ -29,7 +29,13 @@ export async function POST(
             title,
             description,
             category,
-            imageSrc,
+            images: {
+                createMany: {
+                  data: [
+                    ...images.map((image: { url: string }) => image),
+                  ],
+                },
+            },
             userId: currentUser.id
         }
     })

@@ -49,12 +49,21 @@ model Post {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
-  imageSrc    String
   createdAt   DateTime @default(now())
   category    String
   userId      String   @db.ObjectId
+  images      Image[]
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Image {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  url    String
+  postId String @db.ObjectId
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId])
 }
 
 model Category {

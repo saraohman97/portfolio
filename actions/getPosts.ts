@@ -20,6 +20,9 @@ export default async function getPosts(
             where: query,
             orderBy: {
                 createdAt: 'desc'
+            },
+            include: {
+                images: true
             }
         })
 
