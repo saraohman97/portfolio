@@ -94,7 +94,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ toggleModal }) => {
             />
 
             <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-              <Button type="submit">Login</Button>
+              <Button type="submit" disabled={isLoading}>Login</Button>
             </div>
           </form>
         </Form>

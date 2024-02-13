@@ -1,22 +1,22 @@
-import { Button } from "@/components/ui/button";
 import PostsClient from "./(components)/client";
-import Link from "next/link";
-import getCurrentUser from "@/actions/getCurrentUser";
-import { redirect } from "next/navigation";
+import getDashboardPosts from '@/actions/getDashboardPosts'
+import { Post } from "./(components)/columns";
+import { format } from "date-fns";
+
 
 const JournalPage = async () => {
-  const currentUser = await getCurrentUser();
+  const data = await getDashboardPosts();
 
-  if (!currentUser) {
-    redirect("/");
-  }
+  const formattedData: Post[] = data.map((item) => ({
+    id: item.id,
+    title: item.title,
+    category: item.category,
+    createdAt: format(item.createdAt, "MMMM do, yyyy"),
+  }));
 
   return (
     <div>
-      <Link href="/journal/new">
-        <Button>New</Button>
-      </Link>
-      <PostsClient />
+      <PostsClient data={formattedData} />
     </div>
   );
 };

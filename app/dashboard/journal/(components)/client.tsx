@@ -1,21 +1,36 @@
+"use client";
+
 import { Post, columns } from "./columns";
 import { DataTable } from "./data-table";
-import { format } from "date-fns";
-import getDashboardPosts from '@/actions/getDashboardPosts'
+import Heading from "@/components/ui/heading";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-export default async function PostsClient() {
-  const data = await getDashboardPosts();
+interface BlogClientProps {
+  data: Post[];
+}
 
-  const formattedData: Post[] = data.map((item) => ({
-    id: item.id,
-    title: item.title,
-    category: item.category,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
-  }));
+export default function PostsClient({ data }: BlogClientProps) {
+  const router = useRouter();
 
   return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={formattedData} />
-    </div>
+    <>
+      <div className="flex flex-col items-center justify-center w-full text-center">
+        <Heading
+          title="Journal"
+          description="Här hittar du en lista av alla blogginlägg."
+        />
+        <Button
+          onClick={() => router.push("/dashboard/journal/new")}
+          className="self-end"
+        >
+          <Plus className="mr-2" /> Ny post
+        </Button>
+      </div>
+      <div className="container mx-auto py-10">
+        <DataTable columns={columns} data={data} />
+      </div>
+    </>
   );
 }

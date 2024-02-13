@@ -1,20 +1,36 @@
-import getCategories from "@/actions/getCategories";
+'use client'
+
+import { useRouter } from "next/navigation";
 import { Category, columns } from "./columns";
 import { DataTable } from "./data-table";
-import { format } from "date-fns";
+import Heading from "@/components/ui/heading";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
-export default async function PostsClient() {
-  const data = await getCategories();
+interface CategoriesClientProps {
+  data: Category[];
+}
 
-  const formattedData: Category[] = data.map((item) => ({
-    id: item.id,
-    label: item.label,
-    createdAt: format(item.createdAt, "MMMM do, yyyy"),
-  }));
+export default function CategoriesClient({data}: CategoriesClientProps) {
+  const router = useRouter()
 
   return (
+    <>
+          <div className="flex flex-col items-center justify-center w-full text-center">
+        <Heading
+          title="Kategorier"
+          description="Här hittar du en lista av alla kategorier."
+        />
+        <Button
+          onClick={() => router.push("/dashboard/categories/new")}
+          className="self-end"
+        >
+          <Plus className="mr-2" /> Ny kategori
+        </Button>
+      </div>
     <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={formattedData} />
+      <DataTable columns={columns} data={data} />
     </div>
+    </>
   );
 }
