@@ -1,68 +1,71 @@
 "use client";
 
-import { SafeUser } from "@/types";
-import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { useCallback, useState } from "react";
-import { CiUser } from "react-icons/ci";
+import { Button } from "./ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useState } from "react";
+import LoginModal from "./modals/login-modal";
+import { signOut } from "next-auth/react";
+import { SafeUser } from "@/types";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleOpen = useCallback(() => {
-    setIsOpen((value) => !value);
-  }, []);
-
+  const [open, setOpen] = useState(false);
+  const toggleModal = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
   return (
-    <div className="p-2 max-w-screen-lg mx-auto flex items-center justify-between">
-      <Link href="/">Logo</Link>
-      <div className="flex gap-4 items-center">
-        <div onClick={toggleOpen} className="relative cursor-pointer">
-          <div className="p-2 bg-rose-500 rounded-full text-white">
-            <CiUser size={24} />
-          </div>
-          {isOpen && !currentUser && (
-            <div className="absolute top-12 right-0 border rounded min-w-32 bg-white">
-              <Link href="/login">
-                <div className="p-2 hover:bg-gray-50 cursor-pointer">Login</div>
+    <nav className="fixed top-0 w-full bg-white/30 backdrop-blur-sm z-50">
+      <div className="p-2 flex items-center justify-between max-w-screen-xl mx-auto">
+        <Link href="/">
+          <div className="text-lg font-semibold">Sara Öhman</div>
+        </Link>
+        <div className="flex items-center">
+          <Link href="/">
+            <Button variant="link">Portfolio</Button>
+          </Link>
+          <Link href="/journal">
+            <Button variant="link">Journal</Button>
+          </Link>
+
+          {currentUser ? (
+            <>
+              <Link href="/dashboard/journal">
+                <Button variant='link'>Dashboard</Button>
               </Link>
-              <hr />
-              <Link href="/register">
-                <div className="p-2 hover:bg-gray-50 cursor-pointer">
-                  Signin
-                </div>
-              </Link>
-            </div>
-          )}
-          {isOpen && currentUser && (
-            <div className="absolute top-12 right-0 border rounded min-w-32 bg-white">
-              <Link href="/posts">
-                <div className="p-2 hover:bg-gray-50 cursor-pointer">
-                  Posts
-                </div>
-              </Link>
-              <hr />
-              <Link href="/categories">
-                <div className="p-2 hover:bg-gray-50 cursor-pointer">
-                  Categories
-                </div>
-              </Link>
-              <hr />
-              <div
-                onClick={() => signOut()}
-                className="p-2 hover:bg-gray-50 cursor-pointer"
-              >
-                Logout
-              </div>
-            </div>
+              <Button onClick={() => signOut()}>Logga ut</Button>
+            </>
+          ) : (
+            <Dialog open={open} onOpenChange={toggleModal}>
+              <DialogTrigger asChild>
+                <Button variant="default">Login</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Registrera</DialogTitle>
+                  <DialogDescription>
+                    Make changes to your profile here. Click save when youre
+                    done.
+                  </DialogDescription>
+                </DialogHeader>
+
+                <LoginModal toggleModal={toggleModal} />
+              </DialogContent>
+            </Dialog>
           )}
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

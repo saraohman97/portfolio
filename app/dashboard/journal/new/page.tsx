@@ -77,7 +77,7 @@ const New = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-      <Link href="/posts">
+      <Link href="/journal">
         <Button>Back</Button>
       </Link>
       <h1>Write a new post</h1>

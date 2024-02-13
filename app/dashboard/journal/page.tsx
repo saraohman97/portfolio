@@ -4,7 +4,7 @@ import Link from "next/link";
 import getCurrentUser from "@/actions/getCurrentUser";
 import { redirect } from "next/navigation";
 
-const CategoriesPage = async () => {
+const JournalPage = async () => {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {
@@ -13,7 +13,7 @@ const CategoriesPage = async () => {
 
   return (
     <div>
-      <Link href="/categories/new">
+      <Link href="/journal/new">
         <Button>New</Button>
       </Link>
       <PostsClient />
@@ -21,4 +21,4 @@ const CategoriesPage = async () => {
   );
 };
 
-export default CategoriesPage;
+export default JournalPage;
