@@ -27,10 +27,20 @@ interface NewProps {
   categories: Category[];
 }
 
+const frameworks = [
+  {
+    label: 'NextJS'
+  },
+  {
+    label: 'ReactJS'
+  },
+]
+
 const formSchema = z.object({
   title: z.string(),
   description: z.string(),
-  category: z.string(),
+  category: z.string().optional(),
+  framework: z.string().optional(),
   images: z.object({ url: z.string() }).array(),
 });
 
@@ -44,6 +54,7 @@ const New = ({ categories }: NewProps) => {
     title: "",
     description: "",
     category: "",
+    framework: "",
     images: [],
   };
 
@@ -160,6 +171,37 @@ const New = ({ categories }: NewProps) => {
                       className="flex flex-col space-y-1"
                     >
                       {categories.map((item) => (
+                        <FormItem
+                          key={item.label}
+                          className="flex items-center space-x-3 space-y-0"
+                        >
+                          <FormControl>
+                            <RadioGroupItem value={item.label} />
+                          </FormControl>
+                          <FormLabel className="font-normal">
+                            {item.label}
+                          </FormLabel>
+                        </FormItem>
+                      ))}
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="framework"
+              render={({ field }) => (
+                <FormItem className="space-y-3">
+                  <FormLabel>Frameworks</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      className="flex flex-col space-y-1"
+                    >
+                      {frameworks.map((item) => (
                         <FormItem
                           key={item.label}
                           className="flex items-center space-x-3 space-y-0"

@@ -15,6 +15,7 @@ export type Post = {
     description: string;
     createdAt: Date;
     category: string;
+    framework: string;
     userId: string;
     images: Image[];
 }

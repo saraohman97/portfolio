@@ -2,17 +2,22 @@ import prisma from '@/lib/prismadb'
 
 export interface IPostsParams {
     category?: string;
+    framework?: string;
 }
 
 export default async function getPosts(
     params: IPostsParams
 ) {
-    const { category } = params;
+    const { category, framework } = params;
 
     let query: any = {};
 
     if (category) {
         query.category = category;
+    }
+
+    if (framework) {
+        query.framework = framework;
     }
 
     try {

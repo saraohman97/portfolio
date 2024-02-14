@@ -15,6 +15,7 @@ export async function POST(
         title,
         description,
         category,
+        framework,
         images
     } = body;
 
@@ -29,6 +30,7 @@ export async function POST(
             title,
             description,
             category,
+            framework,
             images: {
                 createMany: {
                   data: [

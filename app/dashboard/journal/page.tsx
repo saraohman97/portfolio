@@ -11,6 +11,7 @@ const JournalPage = async () => {
     id: item.id,
     title: item.title,
     category: item.category,
+    framework: item.framework,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 

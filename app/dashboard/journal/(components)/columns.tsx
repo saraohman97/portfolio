@@ -6,6 +6,7 @@ export type Post = {
   id: string;
   title: string;
   category: string;
+  framework: string;
   createdAt: string;
 };
 
@@ -17,6 +18,10 @@ export const columns: ColumnDef<Post>[] = [
   {
     accessorKey: "category",
     header: "Category",
+  },
+  {
+    accessorKey: "framework",
+    header: "Framework",
   },
   {
     accessorKey: "createdAt",

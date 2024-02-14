@@ -5,12 +5,12 @@ import { Badge } from "./ui/badge";
 import { useCallback } from "react";
 import qs from 'query-string'
 
-interface CategoryBadgeProps {
+interface FrameworkBadgeProps {
   label: string;
   selected?: boolean;
 }
 
-const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
+const FrameworkBadge: React.FC<FrameworkBadgeProps> = ({ label, selected }) => {
     const router = useRouter()
     const params = useSearchParams()
 
@@ -23,11 +23,11 @@ const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
 
         const updatedQuery: any = {
             ...currentQuery, 
-            category: label,
+            framework: label,
         }
 
-        if(params?.get('category') === label) {
-            delete updatedQuery.category
+        if(params?.get('framework') === label) {
+            delete updatedQuery.framework
         }
 
         const url = qs.stringifyUrl({
@@ -41,4 +41,4 @@ const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
   return <Badge onClick={handleClick} variant={selected ? "default" : "outline"}>{label}</Badge>;
 };
 
-export default CategoryBadge;
+export default FrameworkBadge;

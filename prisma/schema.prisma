@@ -51,6 +51,7 @@ model Post {
   description String
   createdAt   DateTime @default(now())
   category    String
+  framework  String
   userId      String   @db.ObjectId
   images      Image[]
 
