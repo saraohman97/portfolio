@@ -5,8 +5,8 @@ import { ColumnDef } from "@tanstack/react-table";
 export type Post = {
   id: string;
   title: string;
-  category: string;
-  framework: string;
+  description: string;
+  favorite: boolean;
   createdAt: string;
 };
 
@@ -16,12 +16,12 @@ export const columns: ColumnDef<Post>[] = [
     header: "Title",
   },
   {
-    accessorKey: "category",
-    header: "Category",
+    accessorKey: "description",
+    header: "Description",
   },
   {
-    accessorKey: "framework",
-    header: "Framework",
+    accessorKey: "favorite",
+    header: "Favorite",
   },
   {
     accessorKey: "createdAt",

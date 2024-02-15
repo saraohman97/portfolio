@@ -10,8 +10,8 @@ const JournalPage = async () => {
   const formattedData: Post[] = data.map((item) => ({
     id: item.id,
     title: item.title,
-    category: item.category,
-    framework: item.framework,
+    description: item.description,
+    favorite: item.favorite,
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 

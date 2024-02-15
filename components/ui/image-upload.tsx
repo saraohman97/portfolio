@@ -55,22 +55,22 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         ))}
       </div>
       <CldUploadWidget onUpload={onUpload} uploadPreset="rjtotsre">
-        {({open}) => {
-            const onClick = () => {
-                open();
-            }
+        {({ open }) => {
+          const onClick = () => {
+            open();
+          };
 
-            return (
-                <Button
-                type="button"
-                disabled={disabled}
-                variant='secondary'
-                onClick={onClick}
-                >
-                    <ImagePlus className="h-4 w-4 mr-2" />
-                    Ladda upp en bild
-                </Button>
-            )
+          return (
+            <Button
+              type="button"
+              disabled={disabled}
+              variant="secondary"
+              onClick={onClick}
+            >
+              <ImagePlus className="h-4 w-4 mr-2" />
+              Ladda upp en bild
+            </Button>
+          );
         }}
       </CldUploadWidget>
     </div>

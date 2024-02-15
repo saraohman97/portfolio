@@ -22,6 +22,8 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { Category } from "@prisma/client";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ImageUpload from "@/components/ui/image-upload";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
 
 interface NewProps {
   categories: Category[];
@@ -29,18 +31,51 @@ interface NewProps {
 
 const frameworks = [
   {
-    label: 'NextJS'
+    label: "NextJS",
   },
   {
-    label: 'ReactJS'
+    label: "ReactJS",
   },
-]
+];
+
+const schemas = [
+  {
+    label: "Prisma",
+  },
+  {
+    label: "Mongoose",
+  },
+];
+
+const databases = [
+  {
+    label: "MongoDB",
+  },
+  {
+    label: "MySQL",
+  },
+];
+
+const css = [
+  {
+    label: "Tailwind",
+  },
+  {
+    label: "VanillaCSS",
+  },
+];
 
 const formSchema = z.object({
   title: z.string(),
   description: z.string(),
+  text: z.string().optional(),
+  imageDescription: z.string().optional(),
+  favorite: z.boolean(),
   category: z.string().optional(),
   framework: z.string().optional(),
+  schema: z.string().optional(),
+  database: z.string().optional(),
+  css: z.string().optional(),
   images: z.object({ url: z.string() }).array(),
 });
 
@@ -53,8 +88,14 @@ const New = ({ categories }: NewProps) => {
   const defaultValues = {
     title: "",
     description: "",
+    text: "",
+    imageDescription: "",
     category: "",
     framework: "",
+    database: "",
+    schema: "",
+    css: "",
+    favorite: false,
     images: [],
   };
 
@@ -102,9 +143,9 @@ const New = ({ categories }: NewProps) => {
       </div>
 
       {/* product form */}
-      <div className="space-y-4 max-w-96 mx-auto">
+      <div className="max-w-96 mx-auto">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="title"
@@ -126,6 +167,19 @@ const New = ({ categories }: NewProps) => {
                   <FormLabel>Beskrivning</FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="text"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Text</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -161,67 +215,197 @@ const New = ({ categories }: NewProps) => {
 
             <FormField
               control={form.control}
-              name="category"
+              name="imageDescription"
               render={({ field }) => (
-                <FormItem className="space-y-3">
-                  <FormLabel>Categories</FormLabel>
+                <FormItem>
+                  <FormLabel>Bild beskrivning</FormLabel>
                   <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      className="flex flex-col space-y-1"
-                    >
-                      {categories.map((item) => (
-                        <FormItem
-                          key={item.label}
-                          className="flex items-center space-x-3 space-y-0"
-                        >
-                          <FormControl>
-                            <RadioGroupItem value={item.label} />
-                          </FormControl>
-                          <FormLabel className="font-normal">
-                            {item.label}
-                          </FormLabel>
-                        </FormItem>
-                      ))}
-                    </RadioGroup>
+                    <Input placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+            <div>
+              <FormLabel>Badges</FormLabel>
+              <div className="grid grid-cols-2 gap-y-10 border rounded p-6">
+                <FormField
+                  control={form.control}
+                  name="framework"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Frameworks</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          className="flex flex-col space-y-1"
+                        >
+                          {frameworks.map((item) => (
+                            <FormItem
+                              key={item.label}
+                              className="flex items-center space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <RadioGroupItem value={item.label} />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.label}
+                              </FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
+                <FormField
+                  control={form.control}
+                  name="database"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Databas</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          className="flex flex-col space-y-1"
+                        >
+                          {databases.map((item) => (
+                            <FormItem
+                              key={item.label}
+                              className="flex items-center space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <RadioGroupItem value={item.label} />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.label}
+                              </FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="schema"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Schema</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          className="flex flex-col space-y-1"
+                        >
+                          {schemas.map((item) => (
+                            <FormItem
+                              key={item.label}
+                              className="flex items-center space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <RadioGroupItem value={item.label} />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.label}
+                              </FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="css"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>CSS</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          className="flex flex-col space-y-1"
+                        >
+                          {css.map((item) => (
+                            <FormItem
+                              key={item.label}
+                              className="flex items-center space-x-3 space-y-0"
+                            >
+                              <FormControl>
+                                <RadioGroupItem value={item.label} />
+                              </FormControl>
+                              <FormLabel className="font-normal">
+                                {item.label}
+                              </FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {categories.length !== 0 && (
+                  <FormField
+                    control={form.control}
+                    name="category"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <FormLabel>Kategorier</FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            className="flex flex-col space-y-1"
+                          >
+                            {categories.map((item) => (
+                              <FormItem
+                                key={item.label}
+                                className="flex items-center space-x-3 space-y-0"
+                              >
+                                <FormControl>
+                                  <RadioGroupItem value={item.label} />
+                                </FormControl>
+                                <FormLabel className="font-normal">
+                                  {item.label}
+                                </FormLabel>
+                              </FormItem>
+                            ))}
+                          </RadioGroup>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
+              </div>
+            </div>
             <FormField
               control={form.control}
-              name="framework"
+              name="favorite"
               render={({ field }) => (
-                <FormItem className="space-y-3">
-                  <FormLabel>Frameworks</FormLabel>
+                <FormItem className="flex items-center space-x-4 py-4">
                   <FormControl>
-                    <RadioGroup
-                      onValueChange={field.onChange}
-                      className="flex flex-col space-y-1"
-                    >
-                      {frameworks.map((item) => (
-                        <FormItem
-                          key={item.label}
-                          className="flex items-center space-x-3 space-y-0"
-                        >
-                          <FormControl>
-                            <RadioGroupItem value={item.label} />
-                          </FormControl>
-                          <FormLabel className="font-normal">
-                            {item.label}
-                          </FormLabel>
-                        </FormItem>
-                      ))}
-                    </RadioGroup>
+                    <Checkbox
+                      checked={field.value}
+                      //ts-ignore
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
+                  <FormLabel className="pb-2">Favoritisera</FormLabel>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            <div className="pt-6 space-x-2 flex items-center justify-end w-full">
+            <div className="flex items-center justify-end w-full pb-32">
               <Button type="submit">Skicka</Button>
             </div>
           </form>

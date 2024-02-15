@@ -7,17 +7,17 @@ interface PostsProps {
 
 const Posts: React.FC<PostsProps> = ({ posts }) => {
   return (
-      <div className="w-2/3">
-        {posts.length ? (
-          <>
-            {posts.map((post: any) => {
-              return <PostItem key={post.id} post={post} />;
-            })}
-          </>
-        ) : (
-          <div>No posts with this category</div>
-        )}
-      </div>
+    <div className="w-2/3">
+      {posts.length ? (
+        <>
+          {posts.map((post: any) => {
+            return <PostItem key={post.id} post={post} />;
+          })}
+        </>
+      ) : (
+        <div>Inga inlägg med den kategorin</div>
+      )}
+    </div>
   );
 };
 

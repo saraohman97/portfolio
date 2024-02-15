@@ -13,10 +13,16 @@ export type Post = {
     id: string;
     title: string;
     description: string;
+    text: string;
+    imageDescription: string;
     createdAt: Date;
     category: string;
     framework: string;
+    database: string;
+    schema: string;
+    css: string;
     userId: string;
+    favorite: boolean;
     images: Image[];
 }
 

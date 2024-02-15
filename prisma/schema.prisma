@@ -46,14 +46,21 @@ model Account {
 }
 
 model Post {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String
-  createdAt   DateTime @default(now())
-  category    String
-  framework  String
-  userId      String   @db.ObjectId
-  images      Image[]
+  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  description      String
+  text             String
+  createdAt        DateTime @default(now())
+  userId           String   @db.ObjectId
+  imageDescription String
+  images           Image[]
+
+  category  String
+  framework String
+  schema    String
+  database  String
+  css       String
+  favorite  Boolean
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

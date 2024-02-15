@@ -3,12 +3,15 @@ import prisma from '@/lib/prismadb'
 export interface IPostsParams {
     category?: string;
     framework?: string;
+    database?: string;
+    schema?: string;
+    css?: string;
 }
 
 export default async function getPosts(
     params: IPostsParams
 ) {
-    const { category, framework } = params;
+    const { category, framework, database, schema, css } = params;
 
     let query: any = {};
 
@@ -18,6 +21,18 @@ export default async function getPosts(
 
     if (framework) {
         query.framework = framework;
+    }
+
+    if (database) {
+        query.database = database;
+    }
+
+    if (schema) {
+        query.schema = schema;
+    }
+
+    if (css) {
+        query.css = css;
     }
 
     try {

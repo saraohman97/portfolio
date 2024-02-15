@@ -14,9 +14,15 @@ export async function POST(
     const {
         title,
         description,
+        text,
+        imageDescription,
+        images,
         category,
         framework,
-        images
+        database,
+        schema,
+        css,
+        favorite
     } = body;
 
     Object.keys(body).forEach((value: any) => {
@@ -29,8 +35,14 @@ export async function POST(
         data: {
             title,
             description,
+            text,
+            imageDescription,
             category,
             framework,
+            database,
+            schema,
+            css,
+            favorite,
             images: {
                 createMany: {
                   data: [

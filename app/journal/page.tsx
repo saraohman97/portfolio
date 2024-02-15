@@ -20,5 +20,5 @@ const JournalPage = async ({ searchParams }: JournalProps) => {
       </div>
     </div>
   );
-}
+};
 export default JournalPage;

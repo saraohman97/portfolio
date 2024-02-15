@@ -2,6 +2,7 @@ import { Post } from "@/types";
 import { format } from "date-fns";
 import Image from "next/image";
 import { sv } from "date-fns/locale";
+import { Badge } from "@/components/ui/badge";
 
 interface PostItemProps {
   post: Post;
@@ -10,32 +11,37 @@ interface PostItemProps {
 const PostItem: React.FC<PostItemProps> = ({ post }) => {
   return (
     <div className="mb-24">
-      <h2 className="text-4xl">{post.title}</h2>
       <div className="flex items-center justify-between">
-        <p className="text-slate-400 text-sm my-2">{post.description}</p>
+        <h2 className="text-4xl">{post.title}</h2>
         <p className="text-slate-400 text-sm">
           {format(post.createdAt, "PPP", { locale: sv })}
         </p>
       </div>
+      <hr className="my-5 " />
+
       {/* collection */}
-      <div className="space-x-2 mt-4">
-        badges
+      <div className="space-x-2 my-4">
+        {post.framework && <Badge>{post.framework}</Badge>}
+        {post.database && <Badge>{post.database}</Badge>}
+        {post.schema && <Badge>{post.schema}</Badge>}
+        {post.css && <Badge>{post.css}</Badge>}
+        {post.category && <Badge>{post.category}</Badge>}
       </div>
-      <hr className="mt-5 mb-10" />
-      {/* {article.preText && ( */}
-        <p className="font-semibold mb-4">preText</p>
-      {/* )} */}
-      <p>text</p>
+
+      {post.description && (
+        <p className="font-semibold mb-4">{post.description}</p>
+      )}
+      <p>{post.text}</p>
 
       <p className="pt-10 pl-10 text-sm text-slate-400">
-        Bild: <span>image description</span>
+        Bild: <span>{post.imageDescription}</span>
       </p>
       <Image
         src={post.images[0]?.url}
         alt={post.title}
         width={400}
         height={400}
-        className="w-auto h-full object-contain m-10 mt-0 shadow"
+        className="w-full max-h-96 object-cover m-10 mt-0 shadow"
       />
     </div>
   );
