@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Badge } from "./ui/badge";
+import { Badge } from "../../../components/ui/badge";
 import { useCallback } from "react";
 import qs from 'query-string'
 
@@ -31,14 +31,14 @@ const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
         }
 
         const url = qs.stringifyUrl({
-            url: '/',
+            url: '/journal',
             query: updatedQuery
         }, { skipNull: true })
 
         router.push(url)
     }, [label, params, router])
 
-  return <Badge onClick={handleClick} variant={selected ? "default" : "outline"}>{label}</Badge>;
+  return <Badge onClick={handleClick} variant={selected ? "destructive" : "default"}>{label}</Badge>;
 };
 
 export default CategoryBadge;

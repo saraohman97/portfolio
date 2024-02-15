@@ -24,7 +24,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Navbar currentUser={currentUser} />
         <ToasterProvider />
-        <div className="py-20 px-2 max-w-screen-lg mx-auto">{children}</div>
+        {children}
       </body>
     </html>
   );

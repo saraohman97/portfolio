@@ -6,7 +6,7 @@ interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function DashboardLayou({
+export default async function DashboardLayout({
   children,
 }: DashboardLayoutProps) {
   const currentUser = await getCurrentUser();
@@ -16,10 +16,12 @@ export default async function DashboardLayou({
   }
 
   return (
-    <div>
+    <>
       <h1 className="text-center py-20 text-5xl">Dashboard</h1>
       <DashboardNavbar />
+      <div className="max-w-screen-xl mx-auto">
       {children}
-    </div>
+      </div>
+    </>
   );
 }

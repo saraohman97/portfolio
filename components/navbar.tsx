@@ -24,6 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   const toggleModal = () => {
     open ? setOpen(false) : setOpen(true);
   };
+
   return (
     <nav className="fixed top-0 w-full bg-white/30 backdrop-blur-sm z-50">
       <div className="p-2 flex items-center justify-between max-w-screen-xl mx-auto">
@@ -41,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           {currentUser ? (
             <>
               <Link href="/dashboard/journal">
-                <Button variant='link'>Dashboard</Button>
+                <Button variant="link">Dashboard</Button>
               </Link>
               <Button onClick={() => signOut()}>Logga ut</Button>
             </>

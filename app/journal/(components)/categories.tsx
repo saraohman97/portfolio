@@ -3,7 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import CategoryBadge from "./category-badge";
 import { Category } from "@prisma/client";
-import { Badge } from "./ui/badge";
+import { Badge } from "../../../components/ui/badge";
 import FrameworkBadge from "./framework-badge";
 
 interface CategoriesProps {
@@ -26,24 +26,18 @@ const Categories: React.FC<CategoriesProps> = ({ categories }) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isMainPage = pathname === "/";
+  const isMainPage = pathname === "/journal";
 
   if (!isMainPage) return null;
 
   return (
-    <div>
-      {categories.length ? (
-        <div className="grid grid-cols-2 gap-2">
-          <Badge variant="outline" onClick={() => router.push("/")}>
+    <div className="w-1/3 bg-slate-100 p-10 rounded h-fit">
+      <div>
+        <h3 className="font-semibold text-lg pb-2">Kollektion</h3>
+        <div className="flex flex-wrap gap-2">
+          <Badge onClick={() => router.push("/journal")}>
             All
           </Badge>
-          {categories.map((item) => (
-            <CategoryBadge
-            key={item.id}
-            label={item.label}
-            selected={category === item.label}
-            />
-            ))}
           {frameworks.map((item) => (
             <FrameworkBadge
               key={item.label}
@@ -51,10 +45,15 @@ const Categories: React.FC<CategoriesProps> = ({ categories }) => {
               selected={framework === item.label}
             />
           ))}
+          {categories.map((item) => (
+            <CategoryBadge
+              key={item.id}
+              label={item.label}
+              selected={category === item.label}
+            />
+          ))}
         </div>
-      ) : (
-        <div>No categories</div>
-      )}
+      </div>
     </div>
   );
 };
