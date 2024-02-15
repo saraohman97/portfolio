@@ -16,9 +16,7 @@ const JournalPage = async () => {
   }));
 
   return (
-    <div>
       <PostsClient data={formattedData} />
-    </div>
   );
 };
 

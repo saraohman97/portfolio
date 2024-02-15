@@ -28,9 +28,8 @@ export default function PostsClient({ data }: BlogClientProps) {
           <Plus className="mr-2" /> Ny post
         </Button>
       </div>
-      <div className="container mx-auto py-10">
-        <DataTable columns={columns} data={data} />
-      </div>
+
+      <DataTable columns={columns} data={data} />
     </>
   );
 }

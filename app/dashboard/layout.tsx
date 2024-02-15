@@ -16,12 +16,12 @@ export default async function DashboardLayout({
   }
 
   return (
-    <>
-      <h1 className="text-center py-20 text-5xl">Dashboard</h1>
+    <div className="p-10 max-w-screen-xl mx-auto">
+      <h1 className="text-center py-20 text-5xl mt-10">Dashboard</h1>
+
       <DashboardNavbar />
-      <div className="max-w-screen-xl mx-auto">
+
       {children}
-      </div>
-    </>
+    </div>
   );
 }

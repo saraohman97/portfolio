@@ -115,10 +115,9 @@ const Categories: React.FC<CategoriesProps> = ({ categories, posts }) => {
           ))}
         </div>
       </div>
+
       <hr className="my-6" />
-      {/* {posts.map((fav) => (
-        <div key={fav.id}>{fav.favorite === true}</div>
-      ))} */}
+      
       <div>
         <h3 className="font-semibold text-lg pb-2">Favoriter</h3>
         <div className="space-y-2">
@@ -127,7 +126,7 @@ const Categories: React.FC<CategoriesProps> = ({ categories, posts }) => {
               key={fav.id}
               className="flex items-center justify-between hover:border-b border-slate-500 text-sm"
             >
-              {fav.favorite ? fav.title : 'Inga favoriter hittills.'}
+              {fav.favorite ? fav.title : "Inga favoriter hittills."}
               <p className="text-sm text-slate-400">
                 {fav.favorite && format(fav.createdAt, "PPP", { locale: sv })}
               </p>
