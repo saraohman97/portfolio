@@ -12,11 +12,7 @@ const CategoriesPage = async () => {
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
-  return (
-    <div>
-      <CategoriesClient data={formattedData} />
-    </div>
-  );
+  return <CategoriesClient data={formattedData} />;
 };
 
 export default CategoriesPage;

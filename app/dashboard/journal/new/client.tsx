@@ -66,9 +66,13 @@ const css = [
 ];
 
 const formSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  text: z.string().optional(),
+  title: z.string().min(2, {
+    message: "Behöver vara minst 2 karaktärer.",
+  }),
+  description: z.string().optional(),
+  text: z.string().min(2, {
+    message: "Behöver vara minst 2 karaktärer.",
+  }),
   imageDescription: z.string().optional(),
   favorite: z.boolean(),
   category: z.string().optional(),
@@ -78,8 +82,6 @@ const formSchema = z.object({
   css: z.string().optional(),
   images: z.object({ url: z.string() }).array(),
 });
-
-type PostFormValues = z.infer<typeof formSchema>;
 
 const New = ({ categories }: NewProps) => {
   const router = useRouter();
@@ -99,21 +101,17 @@ const New = ({ categories }: NewProps) => {
     images: [],
   };
 
-  // 1. Define your form.
-  const form = useForm<PostFormValues>({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues,
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(data: PostFormValues) {
-    console.log("ny post:", data);
-
+  function onSubmit(data: z.infer<typeof formSchema>) {
     setIsLoading(true);
     axios
       .post("/api/posts", data)
       .then(() => {
-        toast.success("Post created.");
+        toast.success("Post skapad.");
         router.push("/dashboard/journal");
         router.refresh();
       })
@@ -405,7 +403,7 @@ const New = ({ categories }: NewProps) => {
               )}
             />
 
-            <div className="flex items-center justify-end w-full pb-32">
+            <div className="flex items-center justify-end w-full pb-20">
               <Button type="submit">Skicka</Button>
             </div>
           </form>

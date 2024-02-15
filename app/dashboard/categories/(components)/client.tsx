@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useRouter } from "next/navigation";
 import { Category, columns } from "./columns";
@@ -11,12 +11,12 @@ interface CategoriesClientProps {
   data: Category[];
 }
 
-export default function CategoriesClient({data}: CategoriesClientProps) {
-  const router = useRouter()
+export default function CategoriesClient({ data }: CategoriesClientProps) {
+  const router = useRouter();
 
   return (
     <>
-          <div className="flex flex-col items-center justify-center w-full text-center">
+      <div className="flex flex-col items-center justify-center w-full text-center">
         <Heading
           title="Kategorier"
           description="Här hittar du en lista av alla kategorier."
@@ -28,9 +28,7 @@ export default function CategoriesClient({data}: CategoriesClientProps) {
           <Plus className="mr-2" /> Ny kategori
         </Button>
       </div>
-    <div className="container mx-auto py-10">
-      <DataTable columns={columns} data={data} />
-    </div>
+        <DataTable columns={columns} data={data} />
     </>
   );
 }

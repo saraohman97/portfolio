@@ -1,8 +1,7 @@
 import PostsClient from "./(components)/client";
-import getDashboardPosts from '@/actions/getDashboardPosts'
+import getDashboardPosts from "@/actions/getDashboardPosts";
 import { Post } from "./(components)/columns";
 import { format } from "date-fns";
-
 
 const JournalPage = async () => {
   const data = await getDashboardPosts();
@@ -15,9 +14,7 @@ const JournalPage = async () => {
     createdAt: format(item.createdAt, "MMMM do, yyyy"),
   }));
 
-  return (
-      <PostsClient data={formattedData} />
-  );
+  return <PostsClient data={formattedData} />;
 };
 
 export default JournalPage;

@@ -33,9 +33,11 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
       )}
       <p>{post.text}</p>
 
-      <p className="pt-10 pl-10 text-sm text-slate-400">
-        Bild: <span>{post.imageDescription}</span>
-      </p>
+      {post.imageDescription && (
+        <p className="pt-10 pl-10 text-sm text-slate-400">
+          Bild: <span>{post.imageDescription}</span>
+        </p>
+      )}
       <Image
         src={post.images[0]?.url}
         alt={post.title}
