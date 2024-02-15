@@ -2,15 +2,18 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import CategoryBadge from "./badges/category-badge";
-import { Category } from "@prisma/client";
+import { Category, Post } from "@prisma/client";
 import { Badge } from "../../../components/ui/badge";
 import FrameworkBadge from "./badges/framework-badge";
 import DatabaseBadge from "./badges/database-badge";
 import SchemaBadge from "./badges/schema-badge";
 import CssBadge from "./badges/css-badge";
+import { format } from "date-fns";
+import { sv } from "date-fns/locale";
 
 interface CategoriesProps {
   categories: Category[];
+  posts: Post[];
 }
 
 const frameworks = [
@@ -49,7 +52,7 @@ const csses = [
   },
 ];
 
-const Categories: React.FC<CategoriesProps> = ({ categories }) => {
+const Categories: React.FC<CategoriesProps> = ({ categories, posts }) => {
   const params = useSearchParams();
   const category = params?.get("category");
   const framework = params?.get("framework");
@@ -109,6 +112,26 @@ const Categories: React.FC<CategoriesProps> = ({ categories }) => {
               label={item.label}
               selected={category === item.label}
             />
+          ))}
+        </div>
+      </div>
+      <hr className="my-6" />
+      {/* {posts.map((fav) => (
+        <div key={fav.id}>{fav.favorite === true}</div>
+      ))} */}
+      <div>
+        <h3 className="font-semibold text-lg pb-2">Favoriter</h3>
+        <div className="space-y-2">
+          {posts.map((fav) => (
+            <div
+              key={fav.id}
+              className="flex items-center justify-between hover:border-b border-slate-500 text-sm"
+            >
+              {fav.favorite ? fav.title : 'Inga favoriter hittills.'}
+              <p className="text-sm text-slate-400">
+                {fav.favorite && format(fav.createdAt, "PPP", { locale: sv })}
+              </p>
+            </div>
           ))}
         </div>
       </div>

@@ -16,7 +16,7 @@ const JournalPage = async ({ searchParams }: JournalProps) => {
       <h1 className="text-center py-20 text-5xl my-10">Journal</h1>
       <div className="flex flex-row gap-20">
         <Posts posts={posts} />
-        <Categories categories={categories} />
+        <Categories categories={categories} posts={posts} />
       </div>
     </div>
   );
