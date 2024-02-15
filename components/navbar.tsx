@@ -2,29 +2,16 @@
 
 import Link from "next/link";
 import { Button } from "./ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { useState } from "react";
-import LoginModal from "./modals/login-modal";
+
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/types";
+import LoginButton from "./login-button";
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
-  const [open, setOpen] = useState(false);
-  const toggleModal = () => {
-    open ? setOpen(false) : setOpen(true);
-  };
-
   return (
     <nav className="fixed top-0 w-full bg-white/30 backdrop-blur-sm z-50">
       <div className="p-2 flex items-center justify-between max-w-screen-xl mx-auto">
@@ -47,22 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
               <Button onClick={() => signOut()}>Logga ut</Button>
             </>
           ) : (
-            <Dialog open={open} onOpenChange={toggleModal}>
-              <DialogTrigger asChild>
-                <Button variant="default">Login</Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle>Registrera</DialogTitle>
-                  <DialogDescription>
-                    Make changes to your profile here. Click save when youre
-                    done.
-                  </DialogDescription>
-                </DialogHeader>
-
-                <LoginModal toggleModal={toggleModal} />
-              </DialogContent>
-            </Dialog>
+            <LoginButton />
           )}
         </div>
       </div>
