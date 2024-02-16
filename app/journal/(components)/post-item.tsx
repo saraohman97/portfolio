@@ -43,7 +43,7 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
         alt={post.title}
         width={400}
         height={400}
-        className="w-full max-h-96 object-cover sm:m-10 mt-0 shadow"
+        className="w-full max-h-96 object-cover sm:m-10 sm:mt-0 shadow"
       />
     </div>
   );

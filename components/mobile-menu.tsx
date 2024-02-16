@@ -10,7 +10,6 @@ import { Button } from "./ui/button";
 import { SafeUser } from "@/types";
 import { signOut } from "next-auth/react";
 import LoginButton from "./login-button";
-import Footer from "./footer";
 import { Linkedin } from "lucide-react";
 import { BsGithub } from "react-icons/bs";
 
@@ -23,36 +22,40 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ currentUser }) => {
     <div>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="link">
-            <IoMdMenu size={30} className="sm:hidden bg-white border-none" />
-          </Button>
+          <button className="sm:hidden bg-transparent border-none">
+            <IoMdMenu size={30} />
+          </button>
         </SheetTrigger>
         <SheetContent>
-          <div className="flex justify-between mb-20">
-            <SheetClose asChild>close</SheetClose>
-          </div>
-          <div className="w-full flex flex-col items-end">
+          <div className="w-full flex flex-col justify-center items-end h-full">
             <Link href="/">
-              <Button variant="link">Portfolio</Button>
+              <SheetClose asChild className="bg-transparent border-none">
+                <Button variant="link">Portfolio</Button>
+              </SheetClose>
             </Link>
             <Link href="/journal">
-              <Button variant="link">Journal</Button>
+              <SheetClose asChild className="bg-transparent border-none">
+                <Button variant="link">Journal</Button>
+              </SheetClose>
             </Link>
 
             {currentUser ? (
               <>
                 <Link href="/dashboard/journal">
-                  <Button variant="link">Dashboard</Button>
+                  <SheetClose asChild className="bg-transparent border-none">
+                    <Button variant="link">Dashboard</Button>
+                  </SheetClose>
                 </Link>
-                <Button onClick={() => signOut()} className="mt-4">
-                  Logga ut
-                </Button>
+                <SheetClose asChild>
+                  <Button onClick={() => signOut()} className="mt-4">
+                    Logga ut
+                  </Button>
+                </SheetClose>
               </>
             ) : (
               <>
-                <LoginButton />
 
-                <div className="flex flex-col gap-4 text-end items-end p-2 mt-20">
+                <div className="flex flex-col gap-4 text-end items-end p-4">
                   <a
                     href="https://www.linkedin.com/in/sara-öhman-0b7aa2116/"
                     target="_blank"
@@ -67,14 +70,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ currentUser }) => {
                   >
                     <BsGithub size={20} />
                   </a>
-                  <p className="text-sm">
-                    <span className="font-bold">Nummer: <br /> </span>070 493 73 54
-                  </p>
-                  <p className="text-sm">
-                    <span className="font-bold">Email: <br /> </span>
-                    saraohman97@gmail.com
-                  </p>
                 </div>
+                <LoginButton />
+
               </>
             )}
           </div>
