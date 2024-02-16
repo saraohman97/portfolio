@@ -79,9 +79,9 @@ const LoginButton = () => {
   return (
     <Dialog open={open} onOpenChange={toggleModal}>
       <DialogTrigger asChild>
-        <Button variant="default">Login</Button>
+        <Button variant="default" className="max-sm:m-3">Login</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="max-w-[280px] sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Logga in</DialogTitle>
           <DialogDescription>Anhörig personal endast.</DialogDescription>
@@ -126,7 +126,7 @@ const LoginButton = () => {
               </div>
             </div>
             <DialogFooter>
-              <div className="flex items-center justify-end w-full">
+              <div className="flex items-center justify-end sm:w-full">
                 <Button type="submit" disabled={isLoading}>
                   Logga in
                 </Button>

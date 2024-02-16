@@ -23,7 +23,7 @@ export default function CategoriesClient({ data }: CategoriesClientProps) {
         />
         <Button
           onClick={() => router.push("/dashboard/categories/new")}
-          className="self-end"
+          className="self-end max-sm:mt-10"
         >
           <Plus className="mr-2" /> Ny kategori
         </Button>

@@ -23,7 +23,7 @@ export default function PostsClient({ data }: BlogClientProps) {
         />
         <Button
           onClick={() => router.push("/dashboard/journal/new")}
-          className="self-end"
+          className="self-end max-sm:mt-10"
         >
           <Plus className="mr-2" /> Ny post
         </Button>

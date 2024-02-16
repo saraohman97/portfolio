@@ -16,8 +16,8 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="p-10 max-w-screen-xl mx-auto">
-      <h1 className="text-center py-20 text-5xl mt-10">Dashboard</h1>
+    <div className="p-4 sm:p-10 max-w-screen-xl mx-auto">
+      <h1 className="text-center sm:py-20 text-2xl sm:text-5xl max-sm:pt-20 sm:my-10">Dashboard</h1>
 
       <DashboardNavbar />
 

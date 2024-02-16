@@ -11,18 +11,18 @@ const PortfolioForm = () => {
           className="absolute inset-0 z-0 opacity-10"
         />
         <div className="text-lg mb-2">Sara Öhman</div>
-        <div className="text-3xl font-bold">
+        <div className="text-xl sm:text-3xl text-center font-bold">
           Junior designer & frontend utvecklare
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-10 w-2/3 mx-auto mt-20">
+      <div className="flex flex-col items-center gap-10 sm:w-2/3 mx-auto mt-10 sm:mt-20 p-4">
         <div className="text-2xl text-center">
           Min smak är enkel, <br />
           jag blir lätt nöjd med det bästa <br />- Winston S.Churchill
         </div>
 
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid sm:grid-cols-2 gap-10">
           {skills.map((item) => (
             <div key={item.label}>
               <div className="font-bold text-xl text-center">{item.label}</div>

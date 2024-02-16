@@ -6,6 +6,8 @@ import { Button } from "./ui/button";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/types";
 import LoginButton from "./login-button";
+import MobileMenu from "./mobile-menu";
+
 
 interface NavbarProps {
   currentUser?: SafeUser | null;
@@ -18,7 +20,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
         <Link href="/">
           <div className="text-lg font-semibold">Sara Öhman</div>
         </Link>
-        <div className="flex items-center">
+        <MobileMenu currentUser={currentUser} />
+        <div className="sm:flex items-center hidden">
           <Link href="/">
             <Button variant="link">Portfolio</Button>
           </Link>

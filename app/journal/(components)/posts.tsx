@@ -7,7 +7,7 @@ interface PostsProps {
 
 const Posts: React.FC<PostsProps> = ({ posts }) => {
   return (
-    <div className="w-2/3">
+    <div className="sm:w-2/3 max-sm:mt-10">
       {posts.length ? (
         <>
           {posts.map((post: any) => {

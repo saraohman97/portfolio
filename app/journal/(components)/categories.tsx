@@ -67,7 +67,7 @@ const Categories: React.FC<CategoriesProps> = ({ categories, posts }) => {
   if (!isMainPage) return null;
 
   return (
-    <div className="w-1/3 bg-slate-100 p-10 rounded h-fit">
+    <div className="sm:w-1/3 bg-slate-100 p-10 rounded h-fit">
       <div>
         <h3 className="font-semibold text-lg pb-2">Kollektion</h3>
         <div className="flex flex-wrap gap-2">

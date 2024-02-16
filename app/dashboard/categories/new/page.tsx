@@ -66,7 +66,7 @@ const New = () => {
         <Button
           variant="link"
           onClick={() => router.push("/dashboard/categories")}
-          className="self-end"
+          className="self-end max-sm:mt-10"
         >
           <IoIosArrowRoundBack size={24} className="mr-2" /> Gå tillbaka
         </Button>

@@ -11,8 +11,8 @@ interface PostItemProps {
 const PostItem: React.FC<PostItemProps> = ({ post }) => {
   return (
     <div className="mb-24">
-      <div className="flex items-center justify-between">
-        <h2 className="text-4xl">{post.title}</h2>
+      <div className="flex max-sm:flex-col items-center justify-between">
+        <h2 className="text-2xl sm:text-4xl">{post.title}</h2>
         <p className="text-slate-400 text-sm">
           {format(post.createdAt, "PPP", { locale: sv })}
         </p>
@@ -20,7 +20,7 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
       <hr className="my-5 " />
 
       {/* collection */}
-      <div className="space-x-2 my-4">
+      <div className="flex flex-wrap gap-2 my-4">
         {post.framework && <Badge>{post.framework}</Badge>}
         {post.database && <Badge>{post.database}</Badge>}
         {post.schema && <Badge>{post.schema}</Badge>}
@@ -43,7 +43,7 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
         alt={post.title}
         width={400}
         height={400}
-        className="w-full max-h-96 object-cover m-10 mt-0 shadow"
+        className="w-full max-h-96 object-cover sm:m-10 mt-0 shadow"
       />
     </div>
   );
