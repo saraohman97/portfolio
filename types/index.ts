@@ -25,8 +25,18 @@ export type Post = {
     favorite: boolean;
     images: Image[];
 }
-
 export type Image = {
+    id: string;
+    url: string;
+}
+
+export type Project = {
+    id: string;
+    title: string;
+    link: string;
+    images: ProjectImage[]
+}
+export type ProjectImage = {
     id: string;
     url: string;
 }

@@ -1,10 +1,17 @@
 import Footer from "@/components/footer";
-import PortfolioForm from "./(components)/portfolio-form";
+import Portfolio from "./(components)/portfolio";
+import getProjects from "@/actions/getProjects";
+import ProjectsPage from "./(components)/projects";
 
 export default async function Home(){
+  const projects = await getProjects()
+
   return (
     <>
-      <PortfolioForm />
+      <Portfolio />
+      {projects && (
+        <ProjectsPage projects={projects} />
+      )}
       <Footer />
     </>
   );

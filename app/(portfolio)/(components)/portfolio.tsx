@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const PortfolioForm = () => {
+const Portfolio = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen relative">
@@ -35,7 +35,7 @@ const PortfolioForm = () => {
   );
 };
 
-export default PortfolioForm;
+export default Portfolio;
 
 const skills = [
   {

@@ -54,7 +54,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ currentUser }) => {
               </>
             ) : (
               <>
-
                 <div className="flex flex-col gap-4 text-end items-end p-4">
                   <a
                     href="https://www.linkedin.com/in/sara-öhman-0b7aa2116/"
@@ -72,7 +71,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ currentUser }) => {
                   </a>
                 </div>
                 <LoginButton />
-
               </>
             )}
           </div>
