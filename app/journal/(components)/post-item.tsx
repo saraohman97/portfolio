@@ -41,8 +41,8 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
       <Image
         src={post.images[0]?.url}
         alt={post.title}
-        width={400}
-        height={400}
+        width={1500}
+        height={1500}
         className="w-full max-h-96 object-cover sm:m-10 sm:mt-0 shadow"
       />
     </div>
