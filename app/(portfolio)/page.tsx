@@ -9,9 +9,9 @@ export default async function Home(){
   return (
     <>
       <Portfolio />
-      {projects && (
+      {projects.length ? (
         <ProjectsPage projects={projects} />
-      )}
+      ) : ''}
       <Footer />
     </>
   );
