@@ -120,7 +120,6 @@ const Categories: React.FC<CategoriesProps> = ({ categories, posts }) => {
       
       <div>
         <h3 className="font-semibold text-lg pb-2">Favoriter</h3>
-        <p>Inga favoriter hittills.</p>
         <div className="space-y-2">
           {posts.map((fav) => (
             <div
