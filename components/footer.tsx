@@ -44,7 +44,7 @@ const Footer = () => {
               </p>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Kopiera</p>
+              <p>Klicka för att kopiera!</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
@@ -59,7 +59,7 @@ const Footer = () => {
               </p>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Kopiera</p>
+              <p>Klicka för att kopiera!</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
