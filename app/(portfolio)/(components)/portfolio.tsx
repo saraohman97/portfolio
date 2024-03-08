@@ -11,7 +11,7 @@ const Portfolio = () => {
           className="absolute inset-0 z-0 opacity-10 max-md:object-cover max-md:object-right"
         />
         <div className="text-lg mb-2">Sara Öhman</div>
-        <div className="text-3xl text-center font-bold max-md:px-10 text-wrap">
+        <div className="text-xl sm:text-3xl text-center font-bold max-md:px-6 text-wrap">
           Junior designer & frontend utvecklare
         </div>
       </div>

@@ -12,7 +12,7 @@ const PostItem: React.FC<PostItemProps> = ({ post }) => {
   return (
     <div className="mb-24">
       <div className="flex max-sm:flex-col items-center justify-between">
-        <h2 className="text-2xl sm:text-4xl">{post.title}</h2>
+        <h2 className="text-2xl sm:text-4xl text-center">{post.title}</h2>
         <p className="text-slate-400 text-sm">
           {format(post.createdAt, "PPP", { locale: sv })}
         </p>
