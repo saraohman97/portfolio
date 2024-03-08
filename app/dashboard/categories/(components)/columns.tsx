@@ -11,10 +11,10 @@ export type Category = {
 export const columns: ColumnDef<Category>[] = [
   {
     accessorKey: "label",
-    header: "Label",
+    header: "Etikett",
   },
   {
     accessorKey: "createdAt",
-    header: "CreatedAt",
+    header: "Skapad",
   },
 ];

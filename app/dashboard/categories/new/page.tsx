@@ -81,7 +81,7 @@ const New = () => {
               name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>Etikett</FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
                   </FormControl>

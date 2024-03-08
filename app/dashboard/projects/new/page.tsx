@@ -19,11 +19,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import Heading from "@/components/ui/heading";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { Category } from "@prisma/client";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ImageUpload from "@/components/ui/image-upload";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -68,7 +64,7 @@ const NewProject = () => {
     <>
       <div className="flex flex-col items-center justify-center w-full text-center">
         <Heading
-          title="Ny projekt"
+          title="Nytt projekt"
           description="Posta ett nytt projekt till portfolion."
           center
         />
@@ -103,7 +99,7 @@ const NewProject = () => {
               name="link"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Link</FormLabel>
+                  <FormLabel>Länk</FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
                   </FormControl>
@@ -111,7 +107,7 @@ const NewProject = () => {
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="images"

@@ -164,7 +164,7 @@ const New = ({ categories }: NewProps) => {
                 <FormItem>
                   <FormLabel>Beskrivning</FormLabel>
                   <FormControl>
-                    <Input placeholder="" {...field} />
+                    <Textarea placeholder="" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

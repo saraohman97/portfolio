@@ -13,18 +13,18 @@ export type Post = {
 export const columns: ColumnDef<Post>[] = [
   {
     accessorKey: "title",
-    header: "Title",
+    header: "Titel",
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: "Beskrivning",
   },
   {
     accessorKey: "favorite",
-    header: "Favorite",
+    header: "Favorit",
   },
   {
     accessorKey: "createdAt",
-    header: "CreatedAt",
+    header: "Skapad",
   },
 ];

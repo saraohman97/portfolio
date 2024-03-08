@@ -25,7 +25,7 @@ export default function ProjectsClient({ data }: ProjectsClientProps) {
           onClick={() => router.push("/dashboard/projects/new")}
           className="self-end max-sm:mt-10"
         >
-          <Plus className="mr-2" /> Ny Projekt
+          <Plus className="mr-2" /> Nytt Projekt
         </Button>
       </div>
 

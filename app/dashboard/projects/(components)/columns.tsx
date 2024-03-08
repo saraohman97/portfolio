@@ -12,14 +12,14 @@ export type ProjectColumn = {
 export const columns: ColumnDef<ProjectColumn>[] = [
   {
     accessorKey: "title",
-    header: "Title",
+    header: "Titel",
   },
   {
     accessorKey: "link",
-    header: "Link",
+    header: "Länk",
   },
   {
     accessorKey: "createdAt",
-    header: "CreatedAt",
+    header: "Skapad",
   },
 ];
