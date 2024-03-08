@@ -98,7 +98,11 @@ const LoginButton = () => {
                   render={({ field }) => (
                     <FormItem className="col-span-3">
                       <FormControl>
-                        <Input placeholder="test@test.com" {...field} />
+                        <Input
+                          type="email"
+                          placeholder="test@test.com"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
