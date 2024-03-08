@@ -32,7 +32,7 @@ const DashboardNavbar = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center gap-4 px-4 max-sm:text-sm max-sm:pt-6">
+      <div className="flex items-center justify-center md:gap-4 px-4 max-sm:text-sm max-sm:pt-6">
         {routes.map((route) => (
           <Link
             key={route.label}
