@@ -79,7 +79,7 @@ const LoginButton = () => {
   return (
     <Dialog open={open} onOpenChange={toggleModal}>
       <DialogTrigger asChild>
-        <Button variant="default" className="max-sm:m-3">Login</Button>
+        <Button variant="default" className="max-sm:m-3">Logga in</Button>
       </DialogTrigger>
       <DialogContent className="max-w-[280px] sm:max-w-[425px]">
         <DialogHeader>

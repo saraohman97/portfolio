@@ -7,7 +7,7 @@ interface ProjectsPageProps {
 
 const ProjectsPage: React.FC<ProjectsPageProps> = ({ projects }) => {
   return (
-    <div className="flex flex-col items-center gap-10 sm:w-2/3 mx-auto mt-10 sm:mt-20 p-4">
+    <div className="flex flex-col items-center gap-10 sm:w-2/3 mx-auto my-10 sm:mt-20 sm:mb-40 p-4">
       <div className="text-2xl text-center">Projekt</div>
 
       <div className="grid sm:grid-cols-2 gap-10">
