@@ -70,6 +70,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ currentUser }) => {
                     <BsGithub size={20} />
                   </a>
                 </div>
+
                 <LoginButton />
               </>
             )}

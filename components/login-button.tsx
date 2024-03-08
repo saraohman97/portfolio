@@ -15,16 +15,6 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
-
-const formSchema = z.object({
-  email: z.string().min(2, {
-    message: "Behövs en giltig emailaddress.",
-  }),
-  password: z.string().min(2, {
-    message: "Behövs ett giltigt lösenord.",
-  }),
-});
-
 import {
   Dialog,
   DialogContent,
@@ -36,6 +26,13 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { Label } from "./ui/label";
+
+const formSchema = z.object({
+  email: z.string().email({ message: "Ogiltig emailaddress." }),
+  password: z.string().min(2, {
+    message: "Ogiltigt lösenord.",
+  }),
+});
 
 const LoginButton = () => {
   const [open, setOpen] = useState(false);
@@ -66,7 +63,6 @@ const LoginButton = () => {
       if (callback?.ok) {
         toggleModal();
         router.push("/dashboard/journal");
-        router.refresh();
         toast.success("Inloggad");
       }
 
@@ -79,9 +75,11 @@ const LoginButton = () => {
   return (
     <Dialog open={open} onOpenChange={toggleModal}>
       <DialogTrigger asChild>
-        <Button variant="default" className="max-sm:m-3">Logga in</Button>
+        <Button variant="default" className="max-sm:m-3">
+          Logga in
+        </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[280px] sm:max-w-[425px]">
+      <DialogContent className="max-w-[320px] sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Logga in</DialogTitle>
           <DialogDescription>Anhörig personal endast.</DialogDescription>
@@ -90,7 +88,7 @@ const LoginButton = () => {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <div className="grid gap-4 py-4">
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid sm:grid-cols-4 items-center gap-4">
                 <Label htmlFor="email" className="text-right">
                   Email
                 </Label>
@@ -107,7 +105,7 @@ const LoginButton = () => {
                   )}
                 />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
+              <div className="grid sm:grid-cols-4 sm:items-center gap-4">
                 <Label htmlFor="password" className="text-right">
                   Lösenord
                 </Label>
@@ -117,7 +115,7 @@ const LoginButton = () => {
                   render={({ field }) => (
                     <FormItem className="col-span-3">
                       <FormControl>
-                        <Input placeholder="*****" {...field} />
+                        <Input type="password" placeholder="*****" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
