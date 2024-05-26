@@ -128,7 +128,7 @@ const Categories: React.FC<CategoriesProps> = ({ categories, posts }) => {
               key={fav.id}
               className="flex items-center justify-between hover:border-b border-slate-500 text-sm"
             >
-              {fav.favorite ? fav.title : "Inga favoriter hittills."}
+              {fav.favorite && fav.title}
               <p className="text-sm text-slate-400">
                 {fav.favorite && format(fav.createdAt, "PPP", { locale: sv })}
               </p>

@@ -7,7 +7,6 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import Heading from "@/components/ui/heading";
 import {
@@ -19,16 +18,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
+import { CheckCircle } from "lucide-react";
 
 const formSchema = z.object({
   label: z.string().min(2, {
     message: "Behöver vara minst 2 karaktärer.",
-  })
+  }),
 });
 
 const New = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,12 +45,21 @@ const New = () => {
     axios
       .post("/api/categories", data)
       .then(() => {
-        toast.success("Kategori skapad.");
+        toast({
+          title: "Meddelande:",
+          description: "Categorin är skapad.",
+          action: <CheckCircle />,
+        });
         router.push("/dashboard/categories");
         router.refresh();
       })
       .catch((error) => {
-        toast.error("Something went wrong trying to save product to db.");
+        toast({
+          title: "Meddelande:",
+          description:
+            "Något gick fel när du försökte spara produkten till db.",
+          variant: "destructive",
+        });
       })
       .finally(() => {
         setIsLoading(false);

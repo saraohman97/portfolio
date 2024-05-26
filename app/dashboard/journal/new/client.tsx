@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import toast from "react-hot-toast";
 import Heading from "@/components/ui/heading";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Category } from "@prisma/client";
@@ -24,6 +23,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ImageUpload from "@/components/ui/image-upload";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
+import { CheckCircle } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 interface NewProps {
   categories: Category[];
@@ -86,6 +87,7 @@ const formSchema = z.object({
 const New = ({ categories }: NewProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const defaultValues = {
     title: "",
@@ -111,12 +113,21 @@ const New = ({ categories }: NewProps) => {
     axios
       .post("/api/posts", data)
       .then(() => {
-        toast.success("Post skapad.");
+        toast({
+          title: "Meddelande:",
+          description: "Artikeln är skapad.",
+          action: <CheckCircle />,
+        });
         router.push("/dashboard/journal");
         router.refresh();
       })
       .catch((error) => {
-        toast.error("Something went wrong trying to save product to db.");
+        toast({
+          title: "Meddelande:",
+          description:
+            "Något gick fel när du försökte spara produkten till db.",
+          variant: "destructive",
+        });
       })
       .finally(() => {
         setIsLoading(false);

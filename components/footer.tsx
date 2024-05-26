@@ -1,6 +1,6 @@
 "use client";
 
-import { Linkedin } from "lucide-react";
+import { CheckCircle, Linkedin } from "lucide-react";
 import { BsGithub } from "react-icons/bs";
 import {
   Tooltip,
@@ -8,12 +8,18 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import toast from "react-hot-toast";
+import { useToast } from "./ui/use-toast";
 
 const Footer = () => {
+  const { toast } = useToast();
+
   function copyText(entryText: string) {
     navigator.clipboard.writeText(entryText);
-    toast.success("Kopierad");
+    toast({
+      title: "Meddelande:",
+      description: "Du har nu kopierat innehållet!",
+      action: <CheckCircle />
+    });
   }
 
   return (

@@ -16,10 +16,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import toast from "react-hot-toast";
 import Heading from "@/components/ui/heading";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import ImageUpload from "@/components/ui/image-upload";
+import { CheckCircle } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -32,6 +33,7 @@ const formSchema = z.object({
 const NewProject = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,12 +50,21 @@ const NewProject = () => {
     axios
       .post("/api/projects", data)
       .then(() => {
-        toast.success("Projekt skapad.");
+        toast({
+          title: "Meddelande:",
+          description: "Projekt är skapat.",
+          action: <CheckCircle />,
+        });
         router.push("/dashboard/projects");
         router.refresh();
       })
       .catch((error) => {
-        toast.error("Something went wrong trying to save product to db.");
+        toast({
+          title: "Meddelande:",
+          description:
+            "Något gick fel när du försökte spara produkten till db.",
+          variant: "destructive",
+        });
       })
       .finally(() => {
         setIsLoading(false);

@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import {
   Dialog,
@@ -26,6 +25,8 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import { Label } from "./ui/label";
+import { useToast } from "./ui/use-toast";
+import { CheckCircle } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Ogiltig emailaddress." }),
@@ -39,6 +40,8 @@ const LoginButton = () => {
   const toggleModal = () => {
     open ? setOpen(false) : setOpen(true);
   };
+
+const { toast } = useToast()
 
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -63,11 +66,20 @@ const LoginButton = () => {
       if (callback?.ok) {
         toggleModal();
         router.push("/dashboard/journal");
-        toast.success("Inloggad");
+        router.refresh();
+        toast({
+          title: "Meddelande:",
+          description: "Du är nu inloggad.",
+          action: <CheckCircle />
+        })
       }
-
+      
       if (callback?.error) {
-        toast.error(callback.error);
+        toast({
+          title: "Meddelande:",
+          description: (callback.error),
+          variant: "destructive"
+        })
       }
     });
   }

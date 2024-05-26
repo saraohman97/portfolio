@@ -6,8 +6,9 @@ import { z } from "zod";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
+import { CheckCircle } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2),
@@ -19,6 +20,7 @@ const formSchema = z.object({
 
 const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const {
     register,
@@ -39,10 +41,18 @@ const RegisterPage = () => {
     axios
       .post("/api/register", data)
       .then(() => {
-        toast.success("Registration completted.");
+        toast({
+          title: "Meddelande:",
+          description: "Användaren är skapad.",
+          action: <CheckCircle />,
+        });
       })
       .catch((error: any) => {
-        toast.error(error);
+        toast({
+          title: "Meddelande:",
+          description: error,
+          variant: "destructive",
+        });
       })
       .finally(() => {
         setIsLoading(false);
