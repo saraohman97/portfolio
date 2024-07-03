@@ -34,8 +34,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
               <Link href="/dashboard/journal">
                 <Button variant="link">Dashboard</Button>
               </Link>
-              <Link href="/documentation">
-                <Button variant="link">Documentation</Button>
+              <Link href="/dokumentation">
+                <Button variant="link">Dokumentation</Button>
               </Link>
               <Button onClick={() => signOut()}>Logga ut</Button>
             </>
