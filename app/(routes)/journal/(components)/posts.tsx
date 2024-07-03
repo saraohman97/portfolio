@@ -7,7 +7,7 @@ interface PostsProps {
 
 const Posts: React.FC<PostsProps> = ({ posts }) => {
   return (
-    <div className="sm:w-2/3 sm:mt-10">
+    <div className="w-full">
       {posts.length ? (
         <>
           {posts.map((post: any) => {
@@ -15,7 +15,7 @@ const Posts: React.FC<PostsProps> = ({ posts }) => {
           })}
         </>
       ) : (
-        <div>Inga inlägg med den kategorin</div>
+        <div className="w-full h-[400px]">Inga inlägg med den kategorin</div>
       )}
     </div>
   );

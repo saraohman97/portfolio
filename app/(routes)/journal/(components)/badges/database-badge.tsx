@@ -1,16 +1,16 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Badge } from "../../../../components/ui/badge";
+import { Badge } from "../../../../../components/ui/badge";
 import { useCallback } from "react";
 import qs from "query-string";
 
-interface CategoryBadgeProps {
+interface BadgeProps {
   label: string;
   selected?: boolean;
 }
 
-const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
+const DatabaseBadge: React.FC<BadgeProps> = ({ label, selected }) => {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -23,11 +23,11 @@ const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
 
     const updatedQuery: any = {
       ...currentQuery,
-      category: label,
+      database: label,
     };
 
-    if (params?.get("category") === label) {
-      delete updatedQuery.category;
+    if (params?.get("database") === label) {
+      delete updatedQuery.database;
     }
 
     const url = qs.stringifyUrl(
@@ -44,7 +44,7 @@ const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
   return (
     <Badge
       onClick={handleClick}
-      variant={selected ? "destructive" : "default"}
+      variant={selected ? "destructive" : "secondary"}
       className="cursor-pointer"
     >
       {label}
@@ -52,4 +52,4 @@ const CategoryBadge: React.FC<CategoryBadgeProps> = ({ label, selected }) => {
   );
 };
 
-export default CategoryBadge;
+export default DatabaseBadge;

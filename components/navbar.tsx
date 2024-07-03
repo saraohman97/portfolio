@@ -16,7 +16,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   return (
     <nav className="fixed top-0 w-full bg-white/30 backdrop-blur-sm z-50">
-      <div className="p-2 flex items-center justify-between max-w-screen-xl mx-auto">
+      <div className="px-4 py-2 flex items-center justify-between max-w-screen-xl mx-auto">
         <Link href="/">
           <div className="text-lg font-semibold">Sara Öhman</div>
         </Link>
@@ -33,6 +33,9 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
             <>
               <Link href="/dashboard/journal">
                 <Button variant="link">Dashboard</Button>
+              </Link>
+              <Link href="/documentation">
+                <Button variant="link">Documentation</Button>
               </Link>
               <Button onClick={() => signOut()}>Logga ut</Button>
             </>

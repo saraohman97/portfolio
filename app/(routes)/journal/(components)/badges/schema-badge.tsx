@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { Badge } from "../../../../components/ui/badge";
+import { Badge } from "../../../../../components/ui/badge";
 import { useCallback } from "react";
 import qs from "query-string";
 
@@ -44,7 +44,7 @@ const SchemaBadge: React.FC<BadgeProps> = ({ label, selected }) => {
   return (
     <Badge
       onClick={handleClick}
-      variant={selected ? "destructive" : "default"}
+      variant={selected ? "destructive" : "secondary"}
       className="cursor-pointer"
     >
       {label}

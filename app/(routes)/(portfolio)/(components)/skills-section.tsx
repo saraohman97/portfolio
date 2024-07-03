@@ -1,41 +1,24 @@
-import Image from "next/image";
-
-const Portfolio = () => {
+const SkillsSection = () => {
   return (
-    <>
-      <div className="flex flex-col items-center justify-center h-screen relative">
-        <Image
-          src="/bg.png"
-          alt="Background page of heart"
-          fill
-          className="absolute inset-0 z-0 opacity-10 max-md:object-cover max-md:object-right"
-        />
-        <div className="text-lg mb-2">Sara Öhman</div>
-        <div className="text-xl sm:text-3xl text-center font-bold max-md:px-6 text-wrap">
-          Junior designer & frontend utvecklare
-        </div>
+    <div className="flex flex-col items-center gap-10 sm:w-2/3 mx-auto mt-10 sm:mt-20 p-4">
+      <div className="text-2xl text-center">
+        Min smak är enkel, <br />
+        jag blir lätt nöjd med det bästa <br />- Winston S.Churchill
       </div>
 
-      <div className="flex flex-col items-center gap-10 sm:w-2/3 mx-auto mt-10 sm:mt-20 p-4">
-        <div className="text-2xl text-center">
-          Min smak är enkel, <br />
-          jag blir lätt nöjd med det bästa <br />- Winston S.Churchill
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-10">
-          {skills.map((item) => (
-            <div key={item.label}>
-              <div className="font-bold text-xl text-center">{item.label}</div>
-              <div className="font-extralight">{item.content}</div>
-            </div>
-          ))}
-        </div>
+      <div className="grid sm:grid-cols-2 gap-10">
+        {skills.map((item) => (
+          <div key={item.label}>
+            <div className="font-bold text-xl text-center">{item.label}</div>
+            <div className="font-extralight">{item.content}</div>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
-export default Portfolio;
+export default SkillsSection;
 
 const skills = [
   {
