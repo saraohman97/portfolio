@@ -8,7 +8,6 @@ import { SafeUser } from "@/types";
 import LoginButton from "./login-button";
 import MobileMenu from "./mobile-menu";
 
-
 interface NavbarProps {
   currentUser?: SafeUser | null;
 }
@@ -27,6 +26,10 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
           </Link>
           <Link href="/journal">
             <Button variant="link">Journal</Button>
+          </Link>
+
+          <Link href="/dokumentation">
+            <Button variant="link">Dokumentation</Button>
           </Link>
 
           {currentUser ? (

@@ -41,7 +41,7 @@ const LoginButton = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
-const { toast } = useToast()
+  const { toast } = useToast();
 
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -70,16 +70,16 @@ const { toast } = useToast()
         toast({
           title: "Meddelande:",
           description: "Du är nu inloggad.",
-          action: <CheckCircle />
-        })
+          action: <CheckCircle />,
+        });
       }
-      
+
       if (callback?.error) {
         toast({
           title: "Meddelande:",
-          description: (callback.error),
-          variant: "destructive"
-        })
+          description: callback.error,
+          variant: "destructive",
+        });
       }
     });
   }
