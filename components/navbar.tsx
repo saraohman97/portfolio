@@ -28,10 +28,6 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
             <Button variant="link">Journal</Button>
           </Link>
 
-          <Link href="/dokumentation">
-            <Button variant="link">Dokumentation</Button>
-          </Link>
-
           {currentUser ? (
             <>
               <Link href="/dashboard/journal">
